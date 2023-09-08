@@ -49,30 +49,46 @@
   </body>
 
   <script>
-    swal
-      .fire("olá tudo bem?", "djasjdaj", "info")
-      .then(() => {
-        chamar_sweetalert();
-      })
-      .catch(() => {
-        swal.fire("erro fatal", "tente novamente", "error");
-      });
+    const meu_numero_da_sorte = 8;
+    let component_linha = "";
 
-    const chamar_sweetalert = () => {
-      const obj = {
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-        footer: '<a href="">Why do I have this issue?</a>',
-      };
-
-      swal.fire(obj).then(() => {
-        swal.fire('tudo certo','nenhuma msgg','success');
-      }).catch(() => {
-        swal.fire('ocorreu um erro','houve uma falha desconhecido','error');
-      })
-
+    for (let i = 1; i < 50; i++) {
+      component_linha += `<tr>
+                <th scope="row">${i}</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                </tr>
+            `;
     }
+
+    const html = `<div class="container"> 
+                meu número da sorte: ${meu_numero_da_sorte}
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${component_linha}
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <img class="img-fluid" src="https://sweetalert2.github.io/images/SweetAlert2.png">
+                </div>
+            </div>`;
+
+    Swal.fire({
+      title: "Essa imagem foi eu que fiz!",
+      html: html,
+      showConfirmButton: false,
+      showCloseButton: true,
+      with: "97%",
+    });
   </script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
