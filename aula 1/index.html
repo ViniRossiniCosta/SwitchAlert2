@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo SweetAlert2 com Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center">SweetAlert2</h1>
+                <button class="btn btn-primary" id="showAlert">Teste alertas</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        const obj = {
+            icon: 'info',
+            title: 'Oops...',
+            text: 'Something went wrong!'
+        };
+        swal.fire('olá, seja bem vindo', 'teste', 'success').then(() => {
+            swal.fire('2', 'nada aqui', 'error');
+        }).catch(() => {
+            swal.fire('3', 'tudo aqui', 'info');
+        })
+    </script>
+
+</body>
+
+</html>
