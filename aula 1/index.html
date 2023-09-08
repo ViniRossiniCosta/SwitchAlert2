@@ -26,16 +26,131 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
     <script>
-        const obj = {
-            icon: 'info',
-            title: 'Oops...',
-            text: 'Something went wrong!'
-        };
-        swal.fire('olá, seja bem vindo', 'teste', 'success').then(() => {
-            swal.fire('2', 'nada aqui', 'error');
-        }).catch(() => {
-            swal.fire('3', 'tudo aqui', 'info');
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
         })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
+            }
+        })
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+
+        Swal.fire({
+            title: 'Custom animation with Animate.css',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire('Saved!', '', 'success')
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+
+        Swal.fire({
+            title: '<strong>HTML <u>example</u></strong>',
+            icon: 'info',
+            html:
+                'You can use <b>bold text</b>, ' +
+                '<a href="//sweetalert2.github.io">links</a> ' +
+                'and other HTML tags',
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText:
+                '<i class="fa fa-thumbs-up"></i> Great!',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            cancelButtonText:
+                '<i class="fa fa-thumbs-down"></i>',
+            cancelButtonAriaLabel: 'Thumbs down'
+        })
+        Swal.fire({
+            imageUrl: 'https://placeholder.pics/svg/300x1500',
+            imageHeight: 1500,
+            imageAlt: 'A tall image'
+        })
+        swal.fire('ola, seja bem vindo', 'daksdkaskdkasdkaskdasdk', 'info').then(() => {
+            chamar_sweetAlert();
+        }).catch(() => {
+            swal.fire('erro fatal', '28193021', 'error');
+        })
+        const chamar_sweetAlert = () => {
+            const obj = {
+                icon: 'info',
+                title: 'Oops...',
+                text: 'Something went wrong!'
+            };
+            swal.fire(obj).then(() => {
+                swal.fire('2', 'nada aqui', 'error');
+            }).catch(() => {
+                swal.fire('3', 'tudo aqui', 'info');
+            })
+        }
     </script>
 
 </body>
