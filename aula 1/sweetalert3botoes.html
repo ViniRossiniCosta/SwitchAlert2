@@ -49,30 +49,30 @@
   </body>
 
   <script>
-    swal
-      .fire("olá tudo bem?", "djasjdaj", "info")
-      .then(() => {
-        chamar_sweetalert();
-      })
-      .catch(() => {
-        swal.fire("erro fatal", "tente novamente", "error");
-      });
-
-    const chamar_sweetalert = () => {
-      const obj = {
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-        footer: '<a href="">Why do I have this issue?</a>',
-      };
-
-      swal.fire(obj).then(() => {
-        swal.fire('tudo certo','nenhuma msgg','success');
-      }).catch(() => {
-        swal.fire('ocorreu um erro','houve uma falha desconhecido','error');
-      })
-
-    }
+    Swal.fire({
+      title: "O que você deseja fazer?",
+      showDenyButton: true,
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Salvar",
+      cancelButtonText: "Cancelar",
+      denyButtonText: `Ignorar`,
+      reverseButtons: true,
+      imageUrl: "https://unsplash.it/400/200",
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "Custom image",
+    }).then((result) => {
+      if (result.isConfirmaed) {
+        swal.fire("tudo salvo", "", "success");
+      } else if (result.isDenied) {
+        swal.fire("mudanças que n foram salvas", "", "info");
+      } else if (result.isDismissed) {
+        swal.fire("cancelado", "", "info");
+      } else {
+        swal.fire("nada aqui", "", "info");
+      }
+    });
   </script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
